@@ -1,4 +1,3 @@
-# bitcoinfile
 Bitcoin File
 ===============
 
