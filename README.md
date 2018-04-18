@@ -29,7 +29,7 @@ BIFI in advance, of which 110 million will be used for ecological construction a
 100 million will be used for team incentives.
 
 
-BitcoinFile(BIFI) is a fork of Bitcoin blockchain that occurs at block height 501255,and therewith a new 
+BitcoinFile(BIFI) is a fork of Bitcoin blockchain that occurs at block height 501225,and therewith a new 
 chain will be generated as the BIFI. BIFI miners will begin creating blocks with a new proof-of-work 
 algorithm, and will consecutively develop and enhance the protection for account transfer and privacy 
 based on original features of BIFI.For more information, see https://www.bitcoinfile.org/
