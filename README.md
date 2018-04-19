@@ -49,21 +49,22 @@ mining process can realize the mining function, avoiding a large number of repea
 and energy consumption.
 
 #Seed generation
+----------------------------|-----------------
+[address]                   |Generate [hash0]
+[hash0+nNonceX]             |(sha3)->[hash1]
+[hash1+nNonceX]             |(sha3)->[hash2]
+...                         |... 
+[hash1+nNonceX]             |(CryptoNight)->[hash5120]
+[hash5120+nNonceX]          |(sha3)->[hash5121]
+...                         |
+[hash8190+nNonceX]          |(sha3)->[hash8191]
+[hash0 hash1... hash8191]   |(sha3)-> [hashtotal]
+[hash0]                     |->[hash0_seed_nNonceX]
+[hash1]			                |->[hash1_seed_nNonceX]
+          ^ [hashtotal]     |           
+[hash8190]		              |->[hash8190_seed_nNonceX]
+[hash8191]                  |->[hash8191_seed_nNonceX]
 
-[address]                  ->  Generate [hash0]
-[hash0+nNonceX]            ->  (sha3)->[hash1]
-[hash1+nNonceX]            ->  (sha3)->[hash2]
-...
-[hash1+nNonceX]            ->  (CryptoNight)->[hash5120]
-[hash5120+nNonceX]         ->  (sha3)->[hash5121]
-...
-[hash8190+nNonceX]         ->  (sha3)->[hash8191]
-[hash0 hash1... hash8191]  -> (sha3)-> [hashtotal]
-[hash0]                        [hash0_seed_nNonceX]
-[hash1]			       [hash1_seed_nNonceX]
-...         ^  [hashtotal] ->  ....
-[hash8190]		       [hash8190_seed_nNonceX]
-[hash8191]                     [hash8191_seed_nNonceX]
 Each nNonce corresponds to a seed file. Each height selects 
 one of the 8192 columns based on the hash value of the previous 
 block and participates in the construction of a new block header.
