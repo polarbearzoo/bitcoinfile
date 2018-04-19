@@ -51,7 +51,7 @@ and energy consumption.
 #Seed generation
 
 source                      | algorithm|target
-----------------------------|-----------------
+----------------------------|----------|-------
 [address]                   |Generate |[hash0]
 [hash0+nNonceX]             |(sha3)|[hash1]
 [hash1+nNonceX]             |(sha3)|[hash2]
