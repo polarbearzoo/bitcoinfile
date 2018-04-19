@@ -73,6 +73,6 @@ block and participates in the construction of a new block header.
 
  symbol | coin
 --------|-----------------------------------
- BTC    | [Bitcoin](https://bitcoin.org/)
-        | Testnet (all coins)
- LTC    | [Litecoin](https://litecoin.org/)
+ aaa    | [Bitcoin](https://bitcoin.org/)
+ aaa    | Testnet (all coins)
+ aaa    | [Litecoin](https://litecoin.org/)
