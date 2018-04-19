@@ -71,8 +71,8 @@ one of the 8192 columns based on the hash value of the previous
 block and participates in the construction of a new block header.
 
 
- hexa       | symbol | coin
-------------|--------|-----------------------------------
-1 | BTC    | [Bitcoin](https://bitcoin.org/)
- 2 |        | Testnet (all coins)
-3 | LTC    | [Litecoin](https://litecoin.org/)
+ symbol | coin
+--------|-----------------------------------
+ BTC    | [Bitcoin](https://bitcoin.org/)
+        | Testnet (all coins)
+ LTC    | [Litecoin](https://litecoin.org/)
