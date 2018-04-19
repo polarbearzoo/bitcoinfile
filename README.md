@@ -49,6 +49,7 @@ mining process can realize the mining function, avoiding a large number of repea
 and energy consumption.
 
 #Seed generation
+
 src                         | dest
 ----------------------------|-----------------
 [address]                   |Generate [hash0]
@@ -62,7 +63,7 @@ src                         | dest
 [hash0 hash1... hash8191]   |(sha3)-> [hashtotal]
 [hash0]                     |->[hash0_seed_nNonceX]
 [hash1]		        |->[hash1_seed_nNonceX]
-          ^ [hashtotal]     |           
+          ^ [hashtotal]     | ...          
 [hash8190]	        |->[hash8190_seed_nNonceX]
 [hash8191]                  |->[hash8191_seed_nNonceX]
 
