@@ -8,7 +8,7 @@ define(_CLIENT_VERSION_IS_RELEASE, true)
 define(_COPYRIGHT_YEAR, 2018)
 define(_COPYRIGHT_HOLDERS,[The %s developers])
 define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Bitcoin File Core]])
-AC_INIT([Bitcoin File Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/bitcoinfile/bitcoinfile/issues],[bitcoinfile],[https://www.bitcoinfile.org/])
+AC_INIT([Bitcoin File Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/bitcoinfile/bitcoinfile/issues],[bitcoin],[https://www.bitcoinfile.org/])
 AC_CONFIG_SRCDIR([src/validation.cpp])
 AC_CONFIG_HEADERS([src/config/bitcoin-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
@@ -95,6 +95,14 @@ AC_PATH_TOOL(CPPFILT, c++filt)
 AC_PATH_TOOL(OBJCOPY, objcopy)
 
 AC_ARG_VAR(PYTHONPATH, Augments the default search path for python module files)
+
+
+ # copyindex 32
+AC_ARG_ENABLE([copyindex_32],
+  [AS_HELP_STRING([--enable-copyindex-32],
+  [enable copyindex 32 (disabled by default)])],
+  [enable_copyindex_32=$enableval],
+  [enable_copyindex_32=no])
 
 # Enable wallet
 AC_ARG_ENABLE([wallet],
@@ -1077,6 +1085,18 @@ else
   AC_MSG_RESULT(no)
 fi
 
+
+dnl enable copyindex 32
+AC_MSG_CHECKING([if copyindex 32 should be enabled])
+if test x$enable_copyindex_32 != xno; then
+  AC_MSG_RESULT(yes)
+  AC_DEFINE_UNQUOTED([COPYINDEX_32],[1],[Define to 1 to enable copyindex 32])
+
+else
+  AC_MSG_RESULT(no)
+fi
+
+
 dnl enable upnp support
 AC_MSG_CHECKING([whether to build with support for UPnP])
 if test x$have_miniupnpc = xno; then
@@ -1170,6 +1190,7 @@ AM_CONDITIONAL([TARGET_DARWIN], [test x$TARGET_OS = xdarwin])
 AM_CONDITIONAL([BUILD_DARWIN], [test x$BUILD_OS = xdarwin])
 AM_CONDITIONAL([TARGET_WINDOWS], [test x$TARGET_OS = xwindows])
 AM_CONDITIONAL([ENABLE_WALLET],[test x$enable_wallet = xyes])
+AM_CONDITIONAL([COPYINDEX_32],[test x$enable_copyindex_32 = xyes])
 AM_CONDITIONAL([ENABLE_TESTS],[test x$BUILD_TEST = xyes])
 AM_CONDITIONAL([ENABLE_QT],[test x$bitcoin_enable_qt = xyes])
 AM_CONDITIONAL([ENABLE_QT_TESTS],[test x$BUILD_TEST_QT = xyes])
@@ -1289,6 +1310,7 @@ esac
 echo 
 echo "Options used to compile and link:"
 echo "  with wallet   = $enable_wallet"
+echo "  with copyindex 32 = $enable_copyindex_32"
 echo "  with gui / qt = $bitcoin_enable_qt"
 if test x$bitcoin_enable_qt != xno; then
     echo "    qt version  = $bitcoin_qt_got_major_vers"

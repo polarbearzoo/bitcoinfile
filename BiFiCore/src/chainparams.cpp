@@ -149,9 +149,9 @@ public:
  		vSeeds.emplace_back("dnsseed4.bitcoinfile.org", true); 
  		vSeeds.emplace_back("dnsseed5.bitcoinfile.org", true); 
  		vSeeds.emplace_back("dnsseed6.bitcoinfile.org", true); 
-		vSeeds.emplace_back("dnsseed7.bitcoinfile.org", true); 
-		vSeeds.emplace_back("dnsseed8.bitcoinfile.org", true); 
-		vSeeds.emplace_back("dnsseed9.bitcoinfile.org", true); 
+		vSeeds.emplace_back("dnsseed7.bitcoinfile.org", true);
+		vSeeds.emplace_back("dnsseed8.bitcoinfile.org", true);
+		vSeeds.emplace_back("dnsseed9.bitcoinfile.org", true);
 		
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,0);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
@@ -181,7 +181,6 @@ public:
                 {250000, uint256S("0x000000000000003887df1f29024b06fc2200b55f8af8f35453d7be294df2d214")},
                 {279000, uint256S("0x0000000000000001ae8c72a0b0c301f67e3afca10e819efa9041e458e9bd7e40")},
                 {295000, uint256S("0x00000000000000004d9b4ef50f0f9d686fd69db2e03af35a100370c64632a983")},
-				{501225, uint256S("0x0049ae47ded0aa784f5476a47b90e6442e45fd474f83e5f1b6bd7339a6500905")},
 				{501226, uint256S("0x008c1f1195a89c72db380c947cb42b36c3952337b4038f88c2ee45c1c85581ce")},
             }
         };

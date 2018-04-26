@@ -459,7 +459,7 @@ public:
         block.nTime					= nTime;
         block.nBits					= nBits;
         block.nNonce				= nNonce;
-        return block.GetHashImp();
+        return block.GetHashImp(true);
     }
 
 	uint256 GetBlockHashCheck() const

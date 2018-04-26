@@ -1142,11 +1142,11 @@
     </message>
     <message>
         <source>&amp;Unit to show amounts in:</source>
-        <translation>比特币金额单位(&amp;U)：</translation>
+        <translation>比特币文件金额单位(&amp;U)：</translation>
     </message>
     <message>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>选择比特币单位。</translation>
+        <translation>选择比特币文件单位。</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>

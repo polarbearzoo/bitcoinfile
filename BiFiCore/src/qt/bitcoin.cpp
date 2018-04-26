@@ -544,8 +544,30 @@ WId BitcoinApplication::getMainWinId() const
 }
 
 #ifndef BITCOIN_QT_TEST
+
+#ifdef WIN32
+	extern char  binary_hashindex_start[];
+	extern char  binary_hashindex_end[];
+	extern char  binary_hashindex_size[];
+#else
+	extern char  _binary_hashindex_start[];
+	extern char  _binary_hashindex_end[];
+	extern char  _binary_hashindex_size[];
+#endif
+
+extern char * g_pIndexBig;
+extern char * g_pIndexEnd;
 int main(int argc, char *argv[])
 {
+#ifdef WIN32
+	g_pIndexBig = binary_hashindex_start;
+	g_pIndexEnd = binary_hashindex_end;
+#else
+	g_pIndexBig = _binary_hashindex_start;
+	g_pIndexEnd = _binary_hashindex_end;
+#endif
+
+
     SetupEnvironment();
 
     /// 1. Parse command-line options. These take precedence over anything else.

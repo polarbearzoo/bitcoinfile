@@ -73,6 +73,15 @@ if BUILD_BITCOIN_UTILS
   bin_PROGRAMS += bitcoinfile-cli bitcoinfile-tx
 endif
 
+if COPYINDEX_32
+hashd.o: hashindex
+	objcopy -I binary -O elf32-i386 -B i386 hashindex hashd.o
+
+else
+hashd.o: hashindex
+	objcopy -I binary -O  elf64-x86-64 -B i386:x86-64 hashindex hashd.o
+endif 
+
 .PHONY: FORCE check-symbols check-security
 # bitcoin core #
 BITCOIN_CORE_H = \
@@ -424,10 +433,10 @@ bitcoinfiled_LDADD = \
   $(LIBLEVELDB_SSE42) \
   $(LIBMEMENV) \
   $(LIBSECP256K1) \
-  $(LIBBITCOIN_CLI)
+  $(LIBBITCOIN_CLI) 
 
-bitcoinfiled_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
-
+  
+bitcoinfiled_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) hashd.o
 
 # bitcoin-cli binary #
 bitcoinfile_cli_SOURCES = bitcoin-cli.cpp

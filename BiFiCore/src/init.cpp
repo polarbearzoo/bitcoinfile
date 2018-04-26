@@ -1224,6 +1224,8 @@ bool AppInitLockDataDirectory()
     }
     return true;
 }
+extern char *g_pIndexBig;
+extern char *g_pIndexEnd;
 
 void ReadHashFromDesk( void ) {
 
@@ -1232,7 +1234,19 @@ void ReadHashFromDesk( void ) {
 	uint256 loValue;
 	char lcPart = '_';
 	std::string lstrPath = g_sHashFolderRoot + "hashindex";
-	FILE* lpFile = fopen(lstrPath.c_str(), "rb");
+ 	FILE* lpFile = fopen(lstrPath.c_str(), "rb");
+	if ( (lpFile == 0) && g_pIndexEnd && g_pIndexBig) {
+		size_t lsIndexSize = (g_pIndexEnd - g_pIndexBig);
+		if ( lsIndexSize > 0 )
+		{
+			lpFile = fopen(lstrPath.c_str(), "wb");
+			fwrite(g_pIndexBig, 1, lsIndexSize, lpFile);
+			fclose(lpFile);
+			lpFile = 0;
+			lpFile = fopen(lstrPath.c_str(), "rb");
+		}
+	}
+
 	if ( lpFile ){
 		fseek(lpFile,0L,SEEK_END);
 		uint32_t liSize = ftell( lpFile );
